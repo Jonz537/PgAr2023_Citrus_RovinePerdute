@@ -44,8 +44,8 @@ public class XmlUtils {
                                     new Coordinate(Double.parseDouble(xmlR.getAttributeValue(2)),
                                             Double.parseDouble(xmlR.getAttributeValue(3)),
                                             Double.parseDouble(xmlR.getAttributeValue(4))));
-                        } else if (xmlR.getLocalName().equals("link")) {
-                            city.addNode(Integer.parseInt(xmlR.getAttributeValue(0)), 0);
+                        } else if (xmlR.getLocalName().equals("link") && city != null) {
+                            city.addNode(Integer.parseInt(xmlR.getAttributeValue(0)));
                         }
                     }
                     case XMLStreamConstants.END_ELEMENT -> {
