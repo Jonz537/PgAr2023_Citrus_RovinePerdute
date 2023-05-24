@@ -83,22 +83,38 @@ public class XmlUtils {
         }
     }
 
-    public static void writeMap() {
+    public static void writeMap(City destionation) {
 
-        String filename = "./Output.xml";
+        String filename = "./Routes.xml";
 
         initializeWriterFileXml(filename);
 
         try {
             xmlW.writeStartDocument();
+            xmlW.writeStartElement("routes");
 
-            xmlW.writeStartElement("output");
+            // Tonathiu
+            xmlW.writeStartElement("route");
+            xmlW.writeAttribute("team", "Tonathiu");
+            xmlW.writeAttribute("cost", Dijkstra.getDistanceFromStartCartesian().get(destionation).toString());
+            xmlW.writeAttribute("cities", String.valueOf(Dijkstra.getPathFromStartCartesian().get(destionation).size()));
 
-            xmlW.writeAttribute("numero", String.valueOf(3));
-            xmlW.writeCharacters("Testo Testoso");
+            Dijkstra.getPathFromStartCartesian().get(destionation).forEach(XmlUtils::printCity);
 
-            xmlW.writeEndElement();
+            xmlW.writeEndElement(); // route
 
+            // Metztli
+            xmlW.writeStartElement("route");
+
+            xmlW.writeAttribute("team", "Metztli");
+            xmlW.writeAttribute("cost", Dijkstra.getDistanceFromStartAltitude().get(destionation).toString());
+            xmlW.writeAttribute("cities", String.valueOf(Dijkstra.getPathFromStartAltitude().get(destionation).size()));
+
+            Dijkstra.getPathFromStartAltitude().get(destionation).forEach(XmlUtils::printCity);
+
+            xmlW.writeEndElement(); // route
+
+            xmlW.writeEndElement(); // routes
             xmlW.writeEndDocument();
 
             xmlW.flush();
@@ -106,6 +122,18 @@ public class XmlUtils {
 
         } catch (XMLStreamException | NoSuchElementException e) {
             System.out.println("Reading error:\n" + e.getMessage());
+        }
+    }
+
+    public static void printCity(City city) {
+        try {
+            xmlW.writeEmptyElement("city");
+
+            xmlW.writeAttribute("id", String.valueOf(city.getId()));
+            xmlW.writeAttribute("name", city.getName());
+
+        } catch (XMLStreamException e) {
+            throw new RuntimeException(e);
         }
     }
 }

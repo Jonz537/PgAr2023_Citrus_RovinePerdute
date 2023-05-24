@@ -29,6 +29,10 @@ public class City {
         return unvisited;
     }
 
+    public void setUnvisited() {
+        this.unvisited = true;
+    }
+
     public void visited() {
         this.unvisited = false;
     }
@@ -45,17 +49,13 @@ public class City {
         return hashCode()  == o.hashCode();
     }
 
-    public double distance(City city) {
+    public double cartesianDistance(City city) {
         return Math.sqrt(Math.pow(coordinate.getxCor() - city.coordinate.getxCor(), 2) +
                 Math.pow(coordinate.getyCor() - city.coordinate.getyCor(), 2));
     }
-
-    public double distanceWithAltitude(City city) {
-        return Math.sqrt(Math.pow(coordinate.getxCor() - city.coordinate.getxCor(), 2) +
-                Math.pow(coordinate.getyCor() - city.coordinate.getyCor(), 2) +
-                Math.pow(coordinate.getAltitude() - city.coordinate.getAltitude(), 2));
+    public double altitudeDistance(City city) {
+        return Math.abs(coordinate.getAltitude() - city.coordinate.getAltitude());
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -68,4 +68,7 @@ public class City {
     public int hashCode() {
         return name.hashCode();
     }
+
+
+
 }

@@ -5,17 +5,26 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<City> cities = new ArrayList<>();
 
-        cities = XmlUtils.readMap("PgAr_Map_55.xml");
-//        Dijkstra.pathFind(cities.get(0), cities);
-//
-//        for (Map.Entry<City, Double> entry: Dijkstra.distanceFromStart.entrySet()) {
-//            System.out.println(entry.getKey().getId() + ": " + entry.getValue());
-//        }
+        cities = XmlUtils.readMap("PgAr_Map_50.xml");
 
-        System.out.println("\n\n");
+        City destination = cities.get(cities.size() - 1);
 
-        Dijkstra2 dick = new Dijkstra2(cities);
-        dick.cykablyat(cities);
-        dick.results();
+        Dijkstra.pathFinderCartesian(cities.get(0), cities);
+        Dijkstra.pathFinderAltitude(cities.get(0), cities);
+
+        for (Map.Entry<City, Double> entry: Dijkstra.getDistanceFromStartCartesian().entrySet()) {
+            System.out.println(entry.getKey().getId() + " - " + entry.getKey().getName() + ":  " + entry.getValue());
+        }
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+        for (Map.Entry<City, Double> entry: Dijkstra.getDistanceFromStartAltitude().entrySet()) {
+            System.out.println(entry.getKey().getId() + " - " + entry.getKey().getName() + ":  " + entry.getValue());
+        }
+
+        XmlUtils.writeMap(destination);
+
     }
 }

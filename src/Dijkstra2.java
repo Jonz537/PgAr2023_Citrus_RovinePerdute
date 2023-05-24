@@ -23,8 +23,8 @@ public class Dijkstra2 {
             ArrayList<Integer> adjacentCities = cities.get(city).getAdjacentCities();
 
             for (Integer adjacentCity : adjacentCities) {
-                if (tab.get(adjacentCity) > cities.get(city).distance(cities.get(adjacentCity))) {
-                    tab.add(adjacentCity, cities.get(city).distance(cities.get(adjacentCity)));
+                if (tab.get(adjacentCity) > cities.get(city).cartesianDistance(cities.get(adjacentCity))) {
+                    tab.add(adjacentCity, cities.get(city).cartesianDistance(cities.get(adjacentCity)));
                 }
             }
 

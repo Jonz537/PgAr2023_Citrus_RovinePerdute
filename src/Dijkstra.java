@@ -3,16 +3,18 @@ import java.util.*;
 public class Dijkstra {
 
     private static Deque<City> deque = new ArrayDeque<>();
-    public static HashMap<City, Double> distanceFromStart = new HashMap<>();
-    public static HashMap<City, ArrayList<City>> pathFromStart = new HashMap<>();
+    private static HashMap<City, Double> distanceFromStartCartesian = new HashMap<>();
+    private static HashMap<City, Double> distanceFromStartAltitude = new HashMap<>();
+    private static HashMap<City, ArrayList<City>> pathFromStartCartesian = new HashMap<>();
+    private static HashMap<City, ArrayList<City>> pathFromStartAltitude = new HashMap<>();
 
-    public static void pathFind(City start, ArrayList<City> cities) {
+    public static void pathFinderCartesian(City start, ArrayList<City> cities) {
 
         City currentNode;
         deque.add(start);
         cities.get(0).visited();
 
-        distanceFromStart.put(start, 0.0);
+        distanceFromStartCartesian.put(start, 0.0);
 
         while (deque.size() > 0) {
             currentNode = deque.poll();
@@ -22,25 +24,86 @@ public class Dijkstra {
                     cities.get(i).visited();
                 }
 
-                double currentDistancePlusCurrentNode = distanceFromStart.getOrDefault(currentNode, Double.MAX_VALUE / 2)
-                            + currentNode.distance(cities.get(i));
+                double currentDistancePlusCurrentNodeCartesian = distanceFromStartCartesian.getOrDefault(currentNode, Double.MAX_VALUE / 2)
+                        + currentNode.cartesianDistance(cities.get(i));
 
                 // distanza dall'inizio del nodo attuale + distanza dal prossimo è minore dalla distanza dal prossimo dall'inizo
-                if (currentDistancePlusCurrentNode < distanceFromStart.getOrDefault(cities.get(i), Double.MAX_VALUE/2)) {
-                    // aggiorniamo la distanza del prossimo
-                    distanceFromStart.put(cities.get(i), distanceFromStart.getOrDefault(currentNode, Double.MAX_VALUE) + currentNode.distance(cities.get(i)));
-                    ArrayList<City> updatePath = new ArrayList<>(pathFromStart.get(cities.get(i)));
-                    updatePath.add(currentNode);
-                    pathFromStart.put(cities.get(i), updatePath);
-
-                } else if (currentNode.equals(start)) {
+                if (currentNode.equals(start)) {
                     // aggiungiamo le città iniziali
-                    distanceFromStart.put(cities.get(i), currentNode.distance(cities.get(i)));
+                    distanceFromStartCartesian.put(cities.get(i), currentNode.cartesianDistance(cities.get(i)));
+
                     ArrayList<City> initialPath = new ArrayList<>();
                     initialPath.add(currentNode);
-                    pathFromStart.put(cities.get(i), initialPath);
+                    pathFromStartCartesian.put(cities.get(i), initialPath);
+                } else if (currentDistancePlusCurrentNodeCartesian < distanceFromStartCartesian.getOrDefault(cities.get(i), Double.MAX_VALUE/2)) {
+                    // aggiorniamo la distanza del prossimo
+                    distanceFromStartCartesian.put(cities.get(i), distanceFromStartCartesian.getOrDefault(currentNode, Double.MAX_VALUE) + currentNode.cartesianDistance(cities.get(i)));
+
+                    // aggiorniamo le citta visitate
+                    ArrayList<City> updatePath = new ArrayList<>(pathFromStartCartesian.get(currentNode));
+                    updatePath.add(currentNode);
+                    pathFromStartCartesian.put(cities.get(i), updatePath);
                 }
             }
         }
+    }
+
+    public static void pathFinderAltitude(City start, ArrayList<City> cities) {
+
+        cities.forEach(City::setUnvisited);
+
+        City currentNode;
+        deque.add(start);
+        cities.get(0).visited();
+
+        distanceFromStartAltitude.put(start, 0.0);
+
+        while (deque.size() > 0) {
+            currentNode = deque.poll();
+            for (Integer i: currentNode.getAdjacentCities()) {
+                if (cities.get(i).isUnvisited()) {
+                    deque.add(cities.get(i));
+                    cities.get(i).visited();
+                }
+
+                double currentDistancePlusCurrentNodeAltitude = distanceFromStartAltitude.getOrDefault(currentNode, Double.MAX_VALUE / 2)
+                        + currentNode.altitudeDistance(cities.get(i));
+
+                // distanza dall'inizio del nodo attuale + distanza dal prossimo è minore dalla distanza dal prossimo dall'inizo
+                if (currentNode.equals(start)) {
+                    // aggiungiamo le città iniziali
+                    distanceFromStartAltitude.put(cities.get(i), currentNode.altitudeDistance(cities.get(i)));
+
+                    ArrayList<City> initialPath = new ArrayList<>();
+                    initialPath.add(currentNode);
+                    pathFromStartAltitude.put(cities.get(i), initialPath);
+                } else if (currentDistancePlusCurrentNodeAltitude < distanceFromStartAltitude.getOrDefault(cities.get(i), Double.MAX_VALUE/2)) {
+                    // aggiorniamo la distanza del prossimo
+                    distanceFromStartAltitude.put(cities.get(i), distanceFromStartAltitude.getOrDefault(currentNode, Double.MAX_VALUE) + currentNode.altitudeDistance(cities.get(i)));
+
+                    // aggiorniamo le citta visitate
+                    ArrayList<City> updatePath = new ArrayList<>(pathFromStartAltitude.get(currentNode));
+                    updatePath.add(currentNode);
+                    pathFromStartAltitude.put(cities.get(i), updatePath);
+                }
+            }
+        }
+    }
+
+
+    public static HashMap<City, Double> getDistanceFromStartCartesian() {
+        return distanceFromStartCartesian;
+    }
+
+    public static HashMap<City, ArrayList<City>> getPathFromStartCartesian() {
+        return pathFromStartCartesian;
+    }
+
+    public static HashMap<City, Double> getDistanceFromStartAltitude() {
+        return distanceFromStartAltitude;
+    }
+
+    public static HashMap<City, ArrayList<City>> getPathFromStartAltitude() {
+        return pathFromStartAltitude;
     }
 }
