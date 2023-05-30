@@ -83,9 +83,9 @@ public class XmlUtils {
         }
     }
 
-    public static void writeMap(City destionation) {
+    public static void writeMap(City destionation, String name) {
 
-        String filename = "./Routes.xml";
+        String filename = "./Routes_"+ name + ".xml";
 
         initializeWriterFileXml(filename);
 

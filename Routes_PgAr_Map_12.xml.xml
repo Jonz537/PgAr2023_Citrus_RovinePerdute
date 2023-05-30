@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><?xml version="1.0" ?>
+<routes>
+    <route team="Tonathiu" cost="13.039529675674169" cities="4">
+        <city id="0" name="campo base"/>
+        <city id="1" name="Cusco"/>
+        <city id="3" name="Ollantaytambo"/>
+        <city id="9" name="Machu Picchu"/>
+    </route>
+    <route team="Metztli" cost="20.0" cities="3">
+        <city id="0" name="campo base"/>
+        <city id="6" name="Tenochtitlan"/>
+        <city id="10" name="Quirigua"/>
+    </route>
+</routes>

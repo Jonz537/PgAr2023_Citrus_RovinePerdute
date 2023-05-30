@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+
+// classe non funzionante
 public class Dijkstra2 {
     private ArrayList<Integer> visited = new ArrayList<>();
     private ArrayList<Integer> unvisited = new ArrayList<>();
