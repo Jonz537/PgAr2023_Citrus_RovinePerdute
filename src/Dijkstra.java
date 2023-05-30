@@ -24,6 +24,7 @@ public class Dijkstra {
                     cities.get(i).visited();
                 }
 
+
                 double currentDistancePlusCurrentNodeCartesian = distanceFromStartCartesian.getOrDefault(currentNode, Double.MAX_VALUE / 2)
                         + currentNode.cartesianDistance(cities.get(i));
 
@@ -43,6 +44,8 @@ public class Dijkstra {
                     ArrayList<City> updatePath = new ArrayList<>(pathFromStartCartesian.get(currentNode));
                     updatePath.add(currentNode);
                     pathFromStartCartesian.put(cities.get(i), updatePath);
+
+                    cities.get(i).setUnvisited();
                 }
             }
         }
@@ -85,6 +88,7 @@ public class Dijkstra {
                     ArrayList<City> updatePath = new ArrayList<>(pathFromStartAltitude.get(currentNode));
                     updatePath.add(currentNode);
                     pathFromStartAltitude.put(cities.get(i), updatePath);
+                    cities.get(i).setUnvisited();
                 }
             }
         }

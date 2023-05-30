@@ -13,11 +13,11 @@
         <city id="38" name="Quetzacoatl"/>
         <city id="44" name="Mixco Vieio"/>
     </route>
-    <route team="Metztli" cost="10873.0" cities="11">
+    <route team="Metztli" cost="9345.0" cities="11">
         <city id="0" name="campo base"/>
         <city id="6" name="Rio"/>
         <city id="8" name="Qu'umarkaj"/>
-        <city id="13" name="Mixco Vieio"/>
+        <city id="10" name="Teotiguacan"/>
         <city id="16" name="Guaia"/>
         <city id="21" name="Verolanuova"/>
         <city id="27" name="Guapalupa"/>

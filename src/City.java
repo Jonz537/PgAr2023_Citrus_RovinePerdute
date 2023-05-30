@@ -7,6 +7,7 @@ public class City {
     private String name;
     private Coordinate coordinate;
     private boolean unvisited;
+    public int banana = 0;
 
     private ArrayList<Integer> adjacentCities = new ArrayList<>();
 
@@ -56,6 +57,7 @@ public class City {
     public double altitudeDistance(City city) {
         return Math.abs(coordinate.getAltitude() - city.coordinate.getAltitude());
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -63,12 +65,4 @@ public class City {
         City city = (City) o;
         return id == city.id && coordinate.equals(((City) o).coordinate) && Objects.equals(name, city.name) && Objects.equals(adjacentCities, city.adjacentCities);
     }
-
-    @Override
-    public int hashCode() {
-        return name.hashCode();
-    }
-
-
-
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><?xml version="1.0" ?>
 <routes>
-    <route team="Tonathiu" cost="81491.77713175213" cities="65">
+    <route team="Tonathiu" cost="80029.4079661505" cities="68">
         <city id="0" name="campo base"/>
         <city id="23" name="Guaia"/>
         <city id="58" name="Cusco"/>
@@ -53,24 +53,27 @@
         <city id="1506" name="El Mirador"/>
         <city id="1531" name="Verolanuova"/>
         <city id="1568" name="Kopa"/>
-        <city id="1585" name="Macondo"/>
-        <city id="1606" name="Kopa"/>
+        <city id="1541" name="Quirigua"/>
+        <city id="1583" name="Macondo"/>
+        <city id="1624" name="Teotiguacan"/>
         <city id="1645" name="Verolanuova"/>
         <city id="1687" name="El Mirador"/>
         <city id="1730" name="Macondo"/>
         <city id="1773" name="Machu Picchu"/>
         <city id="1791" name="Chiva"/>
-        <city id="1832" name="Cusco"/>
-        <city id="1870" name="Rio"/>
+        <city id="1797" name="Guapalupa"/>
+        <city id="1826" name="Macondo"/>
+        <city id="1865" name="Teotiguacan"/>
+        <city id="1888" name="Tikal"/>
         <city id="1879" name="Tikal"/>
         <city id="1921" name="Guapalupa"/>
         <city id="1948" name="Mixco Vieio"/>
         <city id="1983" name="Qu'umarkaj"/>
     </route>
-    <route team="Metztli" cost="10003.0" cities="72">
+    <route team="Metztli" cost="9639.0" cities="73">
         <city id="0" name="campo base"/>
-        <city id="35" name="Cusco"/>
-        <city id="14" name="Tenochticlan"/>
+        <city id="36" name="Quetzacoatl"/>
+        <city id="67" name="Mixco Vieio"/>
         <city id="50" name="Tikal"/>
         <city id="88" name="Tikal"/>
         <city id="132" name="Quetzacoatl"/>
@@ -79,12 +82,12 @@
         <city id="221" name="Caracol"/>
         <city id="247" name="Rio"/>
         <city id="263" name="Rio"/>
-        <city id="295" name="El Mirador"/>
-        <city id="318" name="Tikal"/>
-        <city id="339" name="Verolanuova"/>
-        <city id="370" name="Chiva"/>
-        <city id="411" name="Cusco"/>
-        <city id="444" name="Qu'umarkaj"/>
+        <city id="303" name="El Mirador"/>
+        <city id="347" name="Guaia"/>
+        <city id="366" name="Chiqua"/>
+        <city id="373" name="Tenochticlan"/>
+        <city id="408" name="Rio"/>
+        <city id="416" name="Cusco"/>
         <city id="453" name="Machu Picchu"/>
         <city id="483" name="Qu'umarkaj"/>
         <city id="509" name="Guaia"/>
@@ -100,9 +103,11 @@
         <city id="815" name="Quirigua"/>
         <city id="837" name="Guaia"/>
         <city id="866" name="Quetzacoatl"/>
-        <city id="892" name="Guaia"/>
-        <city id="935" name="Tenochticlan"/>
-        <city id="949" name="El Mirador"/>
+        <city id="899" name="Teotiguacan"/>
+        <city id="929" name="Quetzacoatl"/>
+        <city id="936" name="Kopa"/>
+        <city id="944" name="Kopa"/>
+        <city id="972" name="Cusco"/>
         <city id="993" name="Macondo"/>
         <city id="1024" name="Chiqua"/>
         <city id="1067" name="Chiqua"/>
@@ -133,9 +138,8 @@
         <city id="1747" name="Chiqua"/>
         <city id="1790" name="Rio"/>
         <city id="1825" name="Machu Picchu"/>
-        <city id="1830" name="Caracol"/>
-        <city id="1866" name="Guapalupa"/>
-        <city id="1878" name="Mixco Vieio"/>
+        <city id="1809" name="Mixco Vieio"/>
+        <city id="1852" name="Verolanuova"/>
         <city id="1882" name="Verolanuova"/>
         <city id="1921" name="Guapalupa"/>
         <city id="1941" name="Teotiguacan"/>
